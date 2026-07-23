@@ -34,8 +34,8 @@ jobs:
       - name: Commit
         run: |-
           git add .
-          git diff
-          git config --global user.email "github-actions-bot@khoa083.github.io"
-          git config --global user.name "Andrew6rant/GitHub-Actions-Bot"
-          git commit -m "Updated README" -a || echo "No changes to commit"
-          git push
+          git diff --staged || echo "No changes to diff"
+          git config --global user.email "github-actions-bot@example.com"
+          git config --global user.name "GitHub Actions Bot"
+          git commit -m "Updated README automatically" || echo "No changes to commit"
+          git push https://${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git main
